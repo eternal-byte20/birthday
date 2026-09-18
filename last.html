@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Beautiful Memories ✨</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+
+        /* =========================================
+           GLOBAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #ffd1dc 0%,
+                #e6e6fa 25%,
+                #ffefd5 50%,
+                #e6e6fa 75%,
+                #ffd1dc 100%
+            );
+
+            background-size: 400% 400%;
+
+            animation:
+                gradientFlow 15s ease infinite;
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+
+            overflow-x: hidden;
+
+            color: #4a4a4a;
+
+            position: relative;
+        }
+
+
+        /* =========================================
+           BACKGROUND GRADIENT
+        ========================================= */
+
+        @keyframes gradientFlow {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        /* =========================================
+           FLOATING IMAGE CONTAINER
+        ========================================= */
+
+        .floating-images {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           FLOATING IMAGE
+        ========================================= */
+
+        .floating-image {
+
+            position: fixed;
+
+            width: 100px;
+            height: 100px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            border:
+                3px solid
+                rgba(255, 255, 255, 0.9);
+
+            box-shadow:
+                0 8px 25px
+                rgba(255, 105, 180, 0.35),
+
+                0 0 15px
+                rgba(255, 255, 255, 0.7);
+
+            opacity: 0;
+
+            will-change:
+                transform,
+                opacity;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           FLOATING IMAGE ANIMATION
+        ========================================= */
+
+        @keyframes floatingPhoto {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translate3d(
+                        var(--start-x),
+                        var(--start-y),
+                        0
+                    )
+                    rotate(var(--rotation))
+                    scale(0.7);
+            }
+
+
+            15% {
+
+                opacity: 0.8;
+            }
+
+
+            50% {
+
+                opacity: 0.65;
+
+                transform:
+                    translate3d(
+                        var(--middle-x),
+                        var(--middle-y),
+                        0
+                    )
+                    rotate(
+                        calc(var(--rotation) + 10deg)
+                    )
+                    scale(1);
+            }
+
+
+            85% {
+
+                opacity: 0.8;
+            }
+
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translate3d(
+                        var(--end-x),
+                        var(--end-y),
+                        0
+                    )
+                    rotate(
+                        calc(var(--rotation) + 20deg)
+                    )
+                    scale(0.75);
+            }
+
+        }
+
+
+        /* =========================================
+           MAGIC SPARKLES
+        ========================================= */
+
+        .magic-sparkles {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 1;
+        }
+
+
+        .sparkle {
+
+            position: absolute;
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background-color: white;
+
+            animation:
+                twinkle
+                var(--duration, 4s)
+                ease-in-out
+                infinite;
+
+            opacity: 0;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.5);
+            }
+
+            50% {
+
+                opacity: 0.8;
+
+                transform:
+                    scale(1);
+            }
+
+        }
+
+
+        .magic-sparkles::before,
+        .magic-sparkles::after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    white 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            animation:
+                sparkleLayer
+                8s linear infinite;
+
+            opacity: 0.5;
+        }
+
+
+        .magic-sparkles::after {
+
+            animation-delay: -4s;
+
+            transform:
+                rotate(45deg);
+        }
+
+
+        @keyframes sparkleLayer {
+
+            0% {
+
+                transform:
+                    translateY(0);
+            }
+
+            100% {
+
+                transform:
+                    translateY(-50px);
+            }
+
+        }
+
+
+        /* =========================================
+           FLOATING HEARTS
+        ========================================= */
+
+        .floating-hearts {
+
+            position: fixed;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 3;
+        }
+
+
+        .heart {
+
+            position: absolute;
+
+            font-size: 1.5rem;
+
+            color:
+                rgba(
+                    255,
+                    105,
+                    180,
+                    0.6
+                );
+
+            animation:
+                floatHeart
+                var(--float-duration, 6s)
+                ease-in-out
+                infinite;
+
+            animation-delay:
+                var(--delay, 0s);
+        }
+
+
+        @keyframes floatHeart {
+
+            0% {
+
+                transform:
+                    translate(
+                        0,
+                        100vh
+                    )
+                    rotate(0deg);
+            }
+
+            100% {
+
+                transform:
+                    translate(
+                        var(--translate-x, 0),
+                        -100vh
+                    )
+                    rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================================
+           WELCOME SECTION
+        ========================================= */
+
+        .welcome {
+
+            text-align: center;
+
+            padding: 4rem 2rem;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        .welcome h1 {
+
+            font-family:
+                'Dancing Script',
+                cursive;
+
+            font-size: 4rem;
+
+            color: #ff69b4;
+
+            text-shadow:
+                2px 2px 4px
+                rgba(0, 0, 0, 0.1);
+
+            animation:
+                fadeInScale
+                2s ease;
+        }
+
+
+        .welcome p {
+
+            font-size: 1.2rem;
+
+            max-width: 600px;
+
+            margin: 1.5rem auto;
+
+            line-height: 1.6;
+
+            animation:
+                fadeIn
+                2s ease
+                0.5s
+                both;
+        }
+
+
+        /* =========================================
+           MEMORY CONTAINER
+        ========================================= */
+
+        .memory-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 2rem;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(300px, 1fr)
+                );
+
+            gap: 2rem;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        /* =========================================
+           MEMORY CARD
+        ========================================= */
+
+        .memory-card {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.9
+                );
+
+            border-radius: 20px;
+
+            padding: 1.5rem;
+
+            box-shadow:
+                0 10px 20px
+                rgba(0, 0, 0, 0.1);
+
+            transition:
+                all 0.5s
+                cubic-bezier(
+                    0.4,
+                    0,
+                    0.2,
+                    1
+                );
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .memory-card:hover {
+
+            transform:
+                translateY(-10px)
+                scale(1.02);
+
+            box-shadow:
+                0 15px 30px
+                rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =========================================
+           CARD SHINE EFFECT
+        ========================================= */
+
+        .memory-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    45deg,
+                    transparent,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.4
+                    ),
+                    transparent
+                );
+
+            transform:
+                translateX(-100%);
+
+            transition:
+                0.5s;
+
+            pointer-events: none;
+
+            z-index: 6;
+        }
+
+
+        .memory-card:hover::before {
+
+            transform:
+                translateX(100%);
+        }
+
+
+        /* =========================================
+           VIDEO / IMAGE AREA
+        ========================================= */
+
+        .memory-media {
+
+            width: 100%;
+
+            height: 50vh;
+
+            min-height: 300px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            margin-bottom: 1rem;
+
+            background: #000;
+        }
+
+
+        /* =========================================
+           IMAGE
+        ========================================= */
+
+        .memory-img {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            border-radius: 15px;
+
+            display: block;
+
+            transition:
+                opacity 0.6s ease,
+                transform 0.8s ease;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           VIDEO
+        ========================================= */
+
+        .memory-video {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            border-radius: 15px;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.6s ease;
+
+            z-index: 1;
+        }
+
+
+        /* =========================================
+           HOVER → VIDEO
+        ========================================= */
+
+        .memory-card:hover .memory-img {
+
+            opacity: 0;
+
+            transform:
+                scale(1.08);
+        }
+
+
+        .memory-card:hover .memory-video {
+
+            opacity: 1;
+        }
+
+
+        /* =========================================
+           MEMORY TEXT
+        ========================================= */
+
+        .memory-date {
+
+            font-family:
+                'Dancing Script',
+                cursive;
+
+            color: #ff69b4;
+
+            font-size: 1.3rem;
+
+            margin-bottom: 0.5rem;
+        }
+
+
+        .memory-caption {
+
+            font-size: 1rem;
+
+            line-height: 1.5;
+
+            color: #666;
+        }
+
+
+        /* =========================================
+           FINAL MESSAGE
+        ========================================= */
+
+        .final-message {
+
+            text-align: center;
+
+            padding: 4rem 2rem;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.3
+                );
+
+            backdrop-filter:
+                blur(10px);
+
+            margin-top: 3rem;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        .final-message h2 {
+
+            font-family:
+                'Dancing Script',
+                cursive;
+
+            font-size: 3rem;
+
+            color: #ff69b4;
+
+            margin-bottom: 2rem;
+
+            animation:
+                heartbeat
+                2s infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+            }
+
+            50% {
+
+                transform:
+                    scale(1.1);
+            }
+
+        }
+
+
+        .final-message p {
+
+            font-size: 1.2rem;
+
+            max-width: 800px;
+
+            margin:
+                0 auto
+                1.5rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           GOODBYE BUTTON
+        ========================================= */
+
+        .goodbye-btn {
+
+            display: inline-block;
+
+            padding: 1rem 2rem;
+
+            font-size: 1.2rem;
+
+            background:
+                linear-gradient(
+                    45deg,
+                    #ff69b4,
+                    #da70d6
+                );
+
+            color: white;
+
+            border: none;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition:
+                all 0.3s ease;
+
+            box-shadow:
+                0 5px 15px
+                rgba(
+                    255,
+                    105,
+                    180,
+                    0.4
+                );
+
+            animation:
+                float
+                3s infinite
+                ease-in-out;
+        }
+
+
+        .goodbye-btn:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    255,
+                    105,
+                    180,
+                    0.6
+                );
+        }
+
+
+        @keyframes float {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-10px);
+            }
+
+        }
+
+
+        /* =========================================
+           PAGE ANIMATIONS
+        ========================================= */
+
+        @keyframes fadeInScale {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.8);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+
+        }
+
+
+        @keyframes fadeIn {
+
+            0% {
+
+                opacity: 0;
+            }
+
+            100% {
+
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================================
+           CUSTOM SCROLLBAR
+        ========================================= */
+
+        ::-webkit-scrollbar {
+
+            width: 12px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.4
+                );
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+
+            background:
+                linear-gradient(
+                    45deg,
+                    #ff69b4,
+                    #da70d6
+                );
+
+            border-radius: 6px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .welcome {
+
+                padding:
+                    3rem 1.5rem;
+            }
+
+
+            .welcome h1 {
+
+                font-size: 3rem;
+            }
+
+
+            .welcome p {
+
+                font-size: 1rem;
+            }
+
+
+            .memory-container {
+
+                grid-template-columns: 1fr;
+
+                padding:
+                    1.5rem;
+            }
+
+
+            .memory-media {
+
+                height: 50vh;
+
+                min-height: 300px;
+            }
+
+
+            .floating-image {
+
+                width: 75px;
+
+                height: 75px;
+
+                border-radius: 15px;
+            }
+
+
+            .final-message {
+
+                padding:
+                    3rem 1.5rem;
+            }
+
+
+            .final-message h2 {
+
+                font-size:
+                    2.5rem;
+            }
+
+
+            .final-message p {
+
+                font-size:
+                    1rem;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .welcome h1 {
+
+                font-size:
+                    2.5rem;
+            }
+
+
+            .memory-card {
+
+                padding:
+                    1rem;
+            }
+
+
+            .memory-media {
+
+                height:
+                    300px;
+            }
+
+
+            .floating-image {
+
+                width:
+                    60px;
+
+                height:
+                    60px;
+
+                border-radius:
+                    12px;
+
+                border-width:
+                    2px;
+            }
+
+
+            .final-message h2 {
+
+                font-size:
+                    2rem;
+            }
+
+
+            .goodbye-btn {
+
+                font-size:
+                    1rem;
+
+                padding:
+                    0.9rem 1.5rem;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         FLOATING IMAGES
+    ========================================= -->
+
+    <div class="floating-images"></div>
+
+
+    <!-- =========================================
+         MAGIC SPARKLES
+    ========================================= -->
+
+    <div class="magic-sparkles"></div>
+
+
+    <!-- =========================================
+         FLOATING HEARTS
+    ========================================= -->
+
+    <div class="floating-hearts">
+
+        <div
+            class="heart"
+            style="
+                --float-duration: 6s;
+                --delay: 0s;
+                --translate-x: 20px;
+            "
+        >
+            💝
+        </div>
+
+
+        <div
+            class="heart"
+            style="
+                --float-duration: 8s;
+                --delay: 1s;
+                --translate-x: -30px;
+            "
+        >
+            💖
+        </div>
+
+
+        <div
+            class="heart"
+            style="
+                --float-duration: 7s;
+                --delay: 2s;
+                --translate-x: 40px;
+            "
+        >
+            💗
+        </div>
+
+
+        <div
+            class="heart"
+            style="
+                --float-duration: 9s;
+                --delay: 3s;
+                --translate-x: -20px;
+            "
+        >
+            💓
+        </div>
+
+
+        <div
+            class="heart"
+            style="
+                --float-duration: 5s;
+                --delay: 4s;
+                --translate-x: 30px;
+            "
+        >
+            💕
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         WELCOME
+    ========================================= -->
+
+    <section class="welcome">
+
+        <h1>
+            I am falling for this GIRL....
+        </h1>
+
+
+        <p>
+            I can't hold back my smile ever after
+            watching this cutest moments of my DARLA...
+        </p>
+
+    </section>
+
+
+    <!-- =========================================
+         MEMORY CARDS
+    ========================================= -->
+
+    <div class="memory-container">
+
+
+        <!-- =====================================
+             MEMORY 1
+        ====================================== -->
+
+        <div class="memory-card">
+
+            <div class="memory-media">
+
+                <img
+                    src="images and videos/F8FA152E-2899-4BE8-8C22-C91881EE55E7.JPG"
+                    alt="First Memory"
+                    class="memory-img"
+                >
+
+
+                <video
+                    class="memory-video"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="images and videos/a05b0c35311141b1ac8a47cca971fded.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+            </div>
+
+
+            <div class="memory-date">
+
+                Her Smile Says It All
+
+            </div>
+
+
+            <div class="memory-caption">
+
+                You are one of the sweetest girls
+                in my life shona🫶
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             MEMORY 2
+        ====================================== -->
+
+        <div class="memory-card">
+
+            <div class="memory-media">
+
+                <img
+                    src="images and videos/D1ADA9C3-B34B-41FB-82D3-54E1BE17E4EC.JPG"
+                    alt="Second Memory"
+                    class="memory-img"
+                >
+
+
+                <video
+                    class="memory-video"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="images and videos/4449f337ce37426da43e71957666f739.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+            </div>
+
+
+            <div class="memory-date">
+
+                Colorfull happiness...
+
+            </div>
+
+
+            <div class="memory-caption">
+
+                May your journey ahead be filled
+                with happiness, success, and endless
+                smiles.😊💕
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             MEMORY 3
+        ====================================== -->
+
+        <div class="memory-card">
+
+            <div class="memory-media">
+
+                <img
+                    src="images and videos/32B77BA2-D08B-44FD-B261-90FE9972EFF2.JPG"
+                    alt="Third Memory"
+                    class="memory-img"
+                >
+
+
+                <video
+                    class="memory-video"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="images and videos/3d8e60c765b949438318786d438b142e.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+            </div>
+
+
+            <div class="memory-date">
+
+                Pretty Soul
+
+            </div>
+
+
+            <div class="memory-caption">
+
+                Keep being the amazing person you are—
+                you make every moment brighter.🌸💖
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         FINAL MESSAGE
+    ========================================= -->
+
+    <section class="final-message">
+
+        <h2>
+            Thank you so much Darling for coming into my life
+        </h2>
+
+
+        <p>
+
+            You will be special for me ever,
+            the laugh you brought on my face is very
+            precious for me💫
+
+        </p>
+
+
+        <p>
+
+            Mai bahut khus naseeb hu jo ap mere
+            zindagi mea aaye ho,
+            aur mai apko kabhi khona nahi chahunga 🫶
+
+        </p>
+
+
+        <p>
+
+            Hope this birthday brings you lots
+            of happiness, laughter, success...🌸
+
+        </p>
+
+
+        <p>
+
+            Aur suniyea ap sirf mere ho,
+            khabardar koi aur apko aankh utakar
+            dekhega tho✨
+
+        </p>
+
+
+        <p>
+
+            I declare that,
+            Ei nangbu matam chuppagi oina noongshee.
+            🫂❤️
+
+        </p>
+
+    </section>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+
+        /* =========================================
+           FLOATING IMAGES
+        ========================================= */
+
+        const floatingImagesContainer =
+            document.querySelector(
+                '.floating-images'
+            );
+
+
+        const favoriteImages = [
+
+            'images and videos/F8FA152E-2899-4BE8-8C22-C91881EE55E7.JPG',
+
+            'images and videos/D1ADA9C3-B34B-41FB-82D3-54E1BE17E4EC.JPG',
+
+            'images and videos/32B77BA2-D08B-44FD-B261-90FE9972EFF2.JPG',
+
+            'images and videos/Screenshot 2026-09-16 at 23.42.17.png',
+
+            'images and videos/111A5814-1650-4BF9-8761-4A62F4B99C65.JPG',
+
+            'images and videos/37A13C92-6796-4EB2-8DD2-187703074A91.JPG',
+
+            'images and videos/Screenshot 2026-09-16 at 23.42.49.png'
+
+        ];
+
+
+        function createFloatingImage() {
+
+            const image =
+                document.createElement('img');
+
+
+            /* Random image */
+
+            const randomImage =
+                favoriteImages[
+                    Math.floor(
+                        Math.random() *
+                        favoriteImages.length
+                    )
+                ];
+
+
+            image.src = randomImage;
+
+            image.className =
+                'floating-image';
+
+
+            /* -------------------------------------
+               RANDOM SIZE
+            ------------------------------------- */
+
+            const size =
+                Math.floor(
+                    Math.random() * 70
+                ) + 70;
+
+
+            image.style.width =
+                `${size}px`;
+
+            image.style.height =
+                `${size}px`;
+
+
+            /* -------------------------------------
+               RANDOM START POSITION
+            ------------------------------------- */
+
+            const startX =
+                Math.random() *
+                window.innerWidth;
+
+            const startY =
+                Math.random() *
+                window.innerHeight;
+
+
+            /* -------------------------------------
+               RANDOM MOVEMENT
+            ------------------------------------- */
+
+            const movementX =
+                (Math.random() - 0.5) *
+                300;
+
+            const movementY =
+                (Math.random() - 0.5) *
+                300;
+
+
+            image.style.setProperty(
+                '--start-x',
+                `${startX}px`
+            );
+
+
+            image.style.setProperty(
+                '--start-y',
+                `${startY}px`
+            );
+
+
+            image.style.setProperty(
+                '--middle-x',
+                `${startX + movementX}px`
+            );
+
+
+            image.style.setProperty(
+                '--middle-y',
+                `${startY + movementY}px`
+            );
+
+
+            image.style.setProperty(
+                '--end-x',
+                `${startX + movementX * 2}px`
+            );
+
+
+            image.style.setProperty(
+                '--end-y',
+                `${startY + movementY * 2}px`
+            );
+
+
+            /* -------------------------------------
+               RANDOM ROTATION
+            ------------------------------------- */
+
+            const rotation =
+                (Math.random() * 30) - 15;
+
+
+            image.style.setProperty(
+                '--rotation',
+                `${rotation}deg`
+            );
+
+
+            /* -------------------------------------
+               RANDOM ANIMATION SPEED
+            ------------------------------------- */
+
+            const duration =
+                Math.floor(
+                    Math.random() * 7
+                ) + 8;
+
+
+            image.style.animation =
+                `floatingPhoto ${duration}s ease-in-out forwards`;
+
+
+            /* Add to page */
+
+            floatingImagesContainer.appendChild(
+                image
+            );
+
+
+            /* -------------------------------------
+               REMOVE AFTER ANIMATION
+            ------------------------------------- */
+
+            setTimeout(
+                () => {
+
+                    image.remove();
+
+                },
+                duration * 1000
+            );
+
+        }
+
+
+        /* =========================================
+           INITIAL FLOATING IMAGES
+        ========================================= */
+
+        for (
+            let i = 0;
+            i < 12;
+            i++
+        ) {
+
+            setTimeout(
+                () => {
+
+                    createFloatingImage();
+
+                },
+                i * 500
+            );
+
+        }
+
+
+        /* =========================================
+           CONTINUOUS FLOATING IMAGES
+        ========================================= */
+
+        setInterval(
+            () => {
+
+                createFloatingImage();
+
+            },
+            1200
+        );
+
+
+        /* =========================================
+           MEMORY CARD VIDEO CONTROL
+        ========================================= */
+
+        const memoryCards =
+            document.querySelectorAll(
+                '.memory-card'
+            );
+
+
+        memoryCards.forEach(
+            card => {
+
+                const video =
+                    card.querySelector(
+                        '.memory-video'
+                    );
+
+
+                if (!video) return;
+
+
+                /* ---------------------------------
+                   MOUSE ENTER
+                --------------------------------- */
+
+                card.addEventListener(
+                    'mouseenter',
+                    () => {
+
+                        video.currentTime = 0;
+
+                        video.play().catch(
+                            error => {
+
+                                console.log(
+                                    "Video could not play:",
+                                    error
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* ---------------------------------
+                   MOUSE LEAVE
+                --------------------------------- */
+
+                card.addEventListener(
+                    'mouseleave',
+                    () => {
+
+                        video.pause();
+
+                        video.currentTime = 0;
+
+                    }
+                );
+
+
+                /* ---------------------------------
+                   MOBILE TOUCH
+                --------------------------------- */
+
+                card.addEventListener(
+                    'touchstart',
+                    () => {
+
+                        if (video.paused) {
+
+                            video.currentTime = 0;
+
+                            video.play().catch(
+                                () => {}
+                            );
+
+                        } else {
+
+                            video.pause();
+
+                        }
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
